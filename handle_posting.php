@@ -17,12 +17,12 @@ $name = $first_name . ' ' . $last_name;
 $html_post= htmlentities($_POST['posting']);
 $strip_post = strip_tags($_POST['posting']);
 
-print "<div>Thank you, $name, for your posting:<p>$posting</p></div>";
+$words = str_word_count ($posting);
+$posting = substr($posting, 0, 50);
 
-$name = urlencode($name);
-$email = urlencode($_POST['email']);
+print "<div>Thank you, $name, for your posting:<p>$posting</p>
+<p>($words words)</p></div>";
 
-print "<p>Click <a href=\"thanks.php?name=$name&email=$email\">here</a> to continue.</p>";
 
 print"<div>Thank you, $name, for your posting:
 <p>Original: $posting</p>
